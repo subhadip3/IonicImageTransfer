@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+  </head>
+  <body ng-app="starter" ng-controller="ImageCtrl" class="platform-android platform-cordova platform-webview">
+  
+  <ion-pane>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Ionic Image Upload & Download</h1>
+    </ion-header-bar>
+    <ion-content>
+    <!--  <img ng-src="/storage/sdcard0/Others/1490780650579.jpg" style="width: 100%; height: 100%;">-->
+    
+    <ul>
+    <li ng-repeat="event in entry1">
+ <img src="{{event}}" style="width: 60%; height: 60%;" class="stretch">   
+ </li>
+    </ul>  
+    
+    <!--<img ng-src= "{{entry1[50]}}" style="width: 100%; height: 100%;">-->
+   <!--<ion-list>
+     
+    <ion-item *ngFor="entries in entry1" *ng-if="entry1">
+       
+       <img ng-src={{"/storage/sdcard0/Others/" + entries }}" style="width: 100%; height: 100%;">
+    </ion-item>
+      </ion-list> --> 
+
+      <img ng-src="{{pathForImage(image)}}" style="width: 100%; height: 100%;">
+      
+      <!--<img ng-src="{{temp}}" >-->
+    </ion-content>
+
+    <ion-footer-bar class="bar bar-positive">
+      <div class="button-bar">
+        <button class="button icon-left ion-camera" ng-click="loadImage()">Take Photo</button>
+        <button class="button icon-left " ng-click="uploadImage()" ng-disabled="image === null">Upload</button>
+         <button class="button icon-left " ng-click="downloadList()" >Download</button>
+       
+      </div>
+    </ion-footer-bar>
+  
+  </ion-pane>
+</body>
+</html>
